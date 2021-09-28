@@ -12,7 +12,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-FROM ubi8/dotnet-50 AS buildImg
+FROM registry.redhat.io/ubi8/dotnet-50 AS buildImg
 WORKDIR /src
 COPY . .
 RUN mkdir app
@@ -21,7 +21,7 @@ RUN dotnet build net5app.csproj -c Release -o /src/app
 RUN dotnet publish net5app.csproj -c Release -o /src/app
 
 # Run Stage
-FROM ubi8/dotnet-50 AS runImg
+FROM registry.redhat.io/ubi8/dotnet-50 AS runImg
 WORKDIR /app
 EXPOSE 5000
 ENV ASPNETCORE_URLS=http://+:5000
