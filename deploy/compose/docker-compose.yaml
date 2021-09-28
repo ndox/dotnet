@@ -1,0 +1,8 @@
+version: "3.5"
+services:
+  net5app:
+    container_name: net5app
+    image: quay.io/myproject/net5app:latest
+    ports:
+      - target: 5000
+        published: 8080

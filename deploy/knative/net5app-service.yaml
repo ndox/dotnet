@@ -1,0 +1,23 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    move2kube.konveyor.io/service.expose: "true"
+  creationTimestamp: null
+  labels:
+    move2kube.konveyor.io/service: net5app
+  name: net5app
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+        - image: quay.io/myproject/net5app:latest
+          imagePullPolicy: Always
+          name: net5app
+          ports:
+            - containerPort: 5000
+          resources: {}
+      restartPolicy: Always
+status: {}
